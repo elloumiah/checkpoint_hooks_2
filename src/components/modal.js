@@ -60,7 +60,8 @@ function ModalAdd({ movies, setMovies }) {
           </Button>
           <Button
             variant="primary"
-            onClick={() => handleClickAdd({ title, desc, rate })}
+            onClick={() => {handleClickAdd({ title, desc, rate });handleClose()}}
+            
           >
             add movie
           </Button>

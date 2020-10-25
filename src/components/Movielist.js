@@ -3,32 +3,32 @@ import Moviecard from "./Moviecard";
 import ModalAdd from "./modal";
 import Searchmovie from "./filter";
 
-function Movielist(props) {
+function Movielist({movies, setMovies ,rate}) {
   const cardsStyle = {
     display: "flex",
     flexWrap: "wrap",
     margin: "20px",
     justifyContent: "space-around",
+    gap: 12,
   };
   const [Search, setSearch] = useState("");
-  const [starvalue, setStarvalue] = useState("");
+  
+  
   return (
     <div >
-      <div>
-        <Searchmovie setSearch={setSearch} setStarvalue={setStarvalue} />
+      <div className="rating">
+        <Searchmovie setSearch={setSearch}  />
       </div>
       <div style={cardsStyle}>
-      {props.movies
-        .filter(
-          (movie) =>
-            movie.title.toLowerCase().includes(Search.toLowerCase()) &&
-            movie.rate >= starvalue
-        )
+      {movies.filter(movie => movie.title.toUpperCase().includes(Search.toUpperCase()) && (movie.rate>=rate) )
         .map((movie, i) => (
           <Moviecard movie={movie} key={i} />
         ))}
         </div>
-      <ModalAdd movies={props.movies} setMovies={props.setMovies} />
+        <div className="rating">
+      <ModalAdd movies={movies} setMovies={setMovies} />
+
+        </div>
     </div>
   );
 }

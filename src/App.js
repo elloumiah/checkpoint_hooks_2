@@ -34,8 +34,12 @@ function App() {
   const [rate, setRate] = useState('');
   return (
     <div className="App">
+      <div className="rating">
+
       <Rating testRating={true} rate={rate} filterByRate={(rate) =>setRate(rate)} />
-      <Movielist movies={movies} setMovies={setMovies} />
+      </div>
+      <Movielist movies={movies} setMovies={setMovies} rate={rate}/>
+      {console.log(movies.rate)}
     </div>
   );
 }
