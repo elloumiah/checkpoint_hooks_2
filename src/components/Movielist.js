@@ -20,7 +20,7 @@ function Movielist({movies, setMovies ,rate}) {
         <Searchmovie setSearch={setSearch}  />
       </div>
       <div style={cardsStyle}>
-      {movies.filter(movie => movie.title.toUpperCase().includes(Search.toUpperCase()) && (movie.rate>=rate) )
+      {movies.filter(movie => movie.title.toUpperCase().includes(Search.toUpperCase()) && (movie.rate >= rate) )
         .map((movie, i) => (
           <Moviecard movie={movie} key={i} />
         ))}
